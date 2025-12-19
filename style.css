@@ -1,0 +1,333 @@
+/* =========================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+   ========================================= */
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Paleta de Cores Romântica */
+    --primary-color: #d63384;      /* Rosa escuro / Magenta */
+    --secondary-color: #ff8fa3;    /* Rosa claro */
+    --bg-color: #fff0f3;           /* Fundo bem clarinho */
+    --text-color: #4a4a4a;         /* Cinza escuro para texto */
+    --card-bg: #ffffff;            /* Branco para os cartões */
+    --font-title: 'Great Vibes', cursive;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+}
+
+/* Garante que o conteúdo fique ACIMA dos corações de fundo */
+.content-relative {
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =========================================
+   2. ANIMAÇÃO DOS CORAÇÕES (BACKGROUND)
+   ========================================= */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* Fica atrás de tudo */
+    pointer-events: none; /* Permite clicar no site através dos corações */
+}
+
+.hearts-container span {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background: var(--secondary-color);
+    display: block;
+    transform: rotate(45deg);
+    opacity: 0;
+    animation: animateHearts 15s linear infinite;
+}
+
+/* Desenhando o formato do coração usando CSS puro */
+.hearts-container span::before,
+.hearts-container span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.hearts-container span::before { top: -50%; left: 0; }
+.hearts-container span::after { top: 0; left: -50%; }
+
+/* Animação de subir e desaparecer */
+@keyframes animateHearts {
+    0% {
+        transform: translateY(0) rotate(45deg) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(45deg) scale(1.2); /* Sobe até o topo da tela */
+        opacity: 0;
+    }
+}
+
+/* Variações aleatórias para cada coração (tamanho, posição e velocidade) */
+.hearts-container span:nth-child(1) { left: 10%; animation-duration: 12s; }
+.hearts-container span:nth-child(2) { left: 20%; animation-duration: 8s; animation-delay: 2s; background: var(--primary-color); }
+.hearts-child(3) { left: 30%; animation-duration: 15s; animation-delay: 4s; }
+.hearts-container span:nth-child(4) { left: 40%; animation-duration: 10s; animation-delay: 1s; background: var(--primary-color); transform: scale(1.5); }
+.hearts-container span:nth-child(5) { left: 50%; animation-duration: 18s; animation-delay: 5s; }
+.hearts-container span:nth-child(6) { left: 60%; animation-duration: 14s; animation-delay: 3s; background: var(--primary-color); }
+.hearts-container span:nth-child(7) { left: 70%; animation-duration: 9s; animation-delay: 6s; }
+.hearts-container span:nth-child(8) { left: 80%; animation-duration: 20s; animation-delay: 2s; background: var(--primary-color); }
+.hearts-container span:nth-child(9) { left: 90%; animation-duration: 11s; animation-delay: 4s; }
+/* Adicione mais se quiser mais densidade */
+
+/* =========================================
+   3. CABEÇALHO (HERO)
+   ========================================= */
+.hero {
+    height: 80vh; /* Ocupa 80% da altura da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(255,240,243,0.8), rgba(255,255,255,0.9)); /* Gradiente suave */
+}
+
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: 5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   4. SEÇÃO DE TEXTO
+   ========================================= */
+.declaration-section {
+    padding: 60px 0;
+    background: white;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra suave */
+    border-radius: 20px;
+    margin: 20px; /* Margem lateral para não colar na borda em telas grandes */
+}
+
+.declaration-section h2 {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.text-content p {
+    text-align: justify;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   5. CARROSSEL INFINITO (FOTOS)
+   ========================================= */
+.memories-section {
+    padding: 60px 0;
+    text-align: center;
+    overflow: hidden; /* Esconde as fotos que saem da tela */
+}
+
+.memories-section h2 {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+/* Carrosel Pai */
+.carousel-wrapper {
+    margin: 100px auto;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+
+    overflow-x: auto;
+}
+/* Remove a barra de rolagem do carrossel */
+.carousel-wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+/* Carrosel filho (track) */
+.carousel-grupo {
+    display: flex;
+    width: max-content; /* A largura se adapta ao conteúdo */
+    gap: 20px; /* Espaço entre as fotos */
+    animation: spin 40s infinite linear; /* Animação contínua */
+    padding-right: 1em; /* Espaço extra no final para suavizar a transição */
+}
+
+/* Pausar a animação quando passar o mouse em cima */
+.carousel-grupo:hover {
+    animation-play-state: paused;
+}
+
+/* Fotos */
+.memory-card {
+    flex: 0 0 5em; /* Garante que os cartões não encolham ou cresçam */
+
+    min-width: 250px;  /* Largura fixa para cada cartão */
+    max-width: 250px;
+    background: var(--card-bg);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.185);
+    transition: transform 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: scale(1.05); /* Zoom leve ao passar o mouse */
+}
+
+.memory-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; /* Garante que a foto preencha o espaço sem esticar */
+    border-radius: 8px;
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* A mágica do infinito (scroll) */
+@keyframes spin {
+    /* 0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move para a esquerda exatamente 50% da largura total (já que duplicamos as fotos) */
+        /* transform: translateX(-50%); 
+    } */
+
+    from {translate: 0;}
+    to {translate: -50%;}
+}
+
+/* =========================================
+   6. SEÇÃO DE ANIVERSÁRIO
+   ========================================= */
+.birthday-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.birthday-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px dashed var(--primary-color); /* Borda pontilhada charmosa */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.birthday-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.highlight-text {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin: 20px 0;
+    animation: pulse 2s infinite; /* Efeito de pulsar */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* =========================================
+   7. RODAPÉ
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+footer .link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.link:hover{
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   8. RESPONSIVIDADE (Celulares)
+   ========================================= */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.5rem; }
+    .declaration-section h2 { font-size: 2.5rem; }
+    .memories-section h2 { font-size: 2.5rem; }
+    
+    .memory-card {
+        min-width: 200px; /* Cards menores no celular */
+        max-width: 200px;
+    }
+    
+    .memory-card img {
+        height: 250px;
+    }
+    
+    .highlight-text {
+        font-size: 3rem;
+    }
+}
