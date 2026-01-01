@@ -11,11 +11,11 @@
 
 :root {
     /* Paleta de Cores Romântica */
-    --primary-color: #d63384;      /* Rosa escuro / Magenta */
-    --secondary-color: #ff8fa3;    /* Rosa claro */
-    --bg-color: #fff0f3;           /* Fundo bem clarinho */
-    --text-color: #4a4a4a;         /* Cinza escuro para texto */
-    --card-bg: #ffffff;            /* Branco para os cartões */
+    --primary-color: #d63384;
+    --secondary-color: #ff8fa3;
+    --bg-color: #fff0f3;
+    --texto: #4a4a4a;
+    --card-bg: #ffffff;
     --font-title: 'Great Vibes', cursive;
     --font-body: 'Montserrat', sans-serif;
 }
@@ -23,7 +23,7 @@
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--texto);
     line-height: 1.6;
     overflow-x: hidden; /* Evita barra de rolagem horizontal */
 }
